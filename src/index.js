@@ -51,6 +51,7 @@ class App extends React.Component {
             }
     
             this.setState(newState);
+            return;
         }
 
         const startTaskIds = Array.from(start.taskIds);
