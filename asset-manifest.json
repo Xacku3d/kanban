@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/kanban/static/js/main.5e0458ff.chunk.js",
-    "main.js.map": "/kanban/static/js/main.5e0458ff.chunk.js.map",
+    "main.js": "/kanban/static/js/main.2efb0e03.chunk.js",
+    "main.js.map": "/kanban/static/js/main.2efb0e03.chunk.js.map",
     "runtime~main.js": "/kanban/static/js/runtime~main.4f25e9d8.js",
     "runtime~main.js.map": "/kanban/static/js/runtime~main.4f25e9d8.js.map",
     "static/js/2.cb996585.chunk.js": "/kanban/static/js/2.cb996585.chunk.js",
     "static/js/2.cb996585.chunk.js.map": "/kanban/static/js/2.cb996585.chunk.js.map",
     "index.html": "/kanban/index.html",
-    "precache-manifest.c6148fecd9b361d5a76e38bcb02f6362.js": "/kanban/precache-manifest.c6148fecd9b361d5a76e38bcb02f6362.js",
+    "precache-manifest.27681466de63247cfcfb2f9973bd7b41.js": "/kanban/precache-manifest.27681466de63247cfcfb2f9973bd7b41.js",
     "service-worker.js": "/kanban/service-worker.js"
   }
 }
