@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import styled from 'styled-components';
+import useComponentFocus from './useComponentFocus';
 
 const Container = styled.div`
     margin: 8px;
@@ -35,13 +36,8 @@ const Button = styled.button`
 export default function AddNewTask({onNewTask}) {
     const [isFocused, setFocus] = useState(false);
     
-    if(isFocused) {
-        document.body.addEventListener('click',(e) => {
-            if(!(e.target.localName === 'input' || e.target.localName === 'button')) {
-                setFocus(false);
-            }
-        });
-    }
+    const node = useRef();
+    useComponentFocus(node, () => {setFocus(false)});
 
     const getTaskValue = () => {
         onNewTask(document.getElementById('inputTask').value);
@@ -50,12 +46,12 @@ export default function AddNewTask({onNewTask}) {
 
     return (
         isFocused ?
-        <Container isFocused={isFocused}>
+        <Container ref={node} isFocused={isFocused}>
                 <Input  id='inputTask' autoFocus placeholder="Enter the title" type="text"/><br/>
                 <Button value="" onClick={getTaskValue}><b>+</b>&nbsp;&nbsp;Add new task</Button>
         </Container>
         :
-        <Container isFocused={isFocused} onClick={() => setFocus(true)}>
+        <Container ref={node} isFocused={isFocused} onClick={() => setFocus(true)}>
             &nbsp;<b>+</b> &nbsp;&nbsp;&nbsp;Add new task
         </Container>
     )

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './initial-data';
-import Column from './column';
-import AddNewColumn from './addNewColumn';
+import Column from './Column';
+import AddNewColumn from './AddNewColumn';
 
 document.body.style.backgroundColor = '#D0E0EF'
 

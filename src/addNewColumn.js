@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styled from 'styled-components';
+import useComponentFocus from './useComponentFocus';
 
 const Container = styled.div`   
     padding: 8px;
@@ -35,13 +36,8 @@ const Button = styled.button`
 export default function AddNewColumn({onNewColumn}) {
     const [isFocused, setFocus] = useState(false);
 
-    if(isFocused) {
-        document.body.addEventListener('click',(e) => {
-            if(!(e.target.localName === 'input' || e.target.localName === 'button')) {
-                setFocus(false);
-            }
-        });
-    }
+    const node = useRef();
+    useComponentFocus(node, () => {setFocus(false)});
 
     const getCoulmnValue = () => {
         onNewColumn(document.getElementById('inputColumn').value);
@@ -50,13 +46,13 @@ export default function AddNewColumn({onNewColumn}) {
 
     return (
         isFocused ?
-        <Container isFocused={isFocused}>
+        <Container ref={node} isFocused={isFocused}>
                 <Input  id='inputColumn' autoFocus placeholder="Enter the title" type="text"/><br/>
                 <Button value="" onClick={getCoulmnValue}><b>+</b> &nbsp;&nbsp;Add new column</Button>
         </Container>
         :
-        <Container isFocused={isFocused}>
-            <div onClick={() => setFocus(true)}>
+        <Container ref={node} isFocused={isFocused} onClick={() => setFocus(true)}>
+            <div>
             &nbsp;<b>+</b> &nbsp;&nbsp;&nbsp;Add new column
             </div>
         </Container>
