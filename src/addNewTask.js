@@ -40,7 +40,9 @@ export default function AddNewTask({onNewTask}) {
     useComponentFocus(node, () => {setFocus(false)});
 
     const getTaskValue = () => {
-        onNewTask(document.getElementById('inputTask').value);
+        const value = document.getElementById('inputTask').value;
+        if(value === "") {return;}
+        onNewTask(value);
         setFocus(false);
     }
 

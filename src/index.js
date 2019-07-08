@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './initial-data';
-import Column from './Column';
-import AddNewColumn from './AddNewColumn';
+import Column from './column';
+import AddNewColumn from './addNewColumn';
 
 document.body.style.backgroundColor = '#D0E0EF'
 
 const Container = styled.div`
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
 `
 class App extends React.Component {
     state = initialData;

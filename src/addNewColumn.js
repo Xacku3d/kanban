@@ -6,7 +6,7 @@ const Container = styled.div`
     padding: 8px;
     margin: 8px;
     font-family: 'Noto Sans KR', sans-serif;
-    width: 220px;
+    min-width: 220px;
     height: ${props => props.isFocused ? '65px' : '30px'};
     border: solid 2px #A5D328;
     cursor: pointer;
@@ -30,7 +30,7 @@ const Button = styled.button`
     height: 29px;
     background-color: #A5D328;
     color: #FFFFFC;
-    paddinf-left: 0px;
+    padding-left: 0px;
 `
 
 export default function AddNewColumn({onNewColumn}) {
@@ -40,15 +40,17 @@ export default function AddNewColumn({onNewColumn}) {
     useComponentFocus(node, () => {setFocus(false)});
 
     const getCoulmnValue = () => {
-        onNewColumn(document.getElementById('inputColumn').value);
+        const value = document.getElementById('inputColumn').value;
+        if(value === "") {return;}
+        onNewColumn(value);
         setFocus(false);
     }
 
     return (
         isFocused ?
         <Container ref={node} isFocused={isFocused}>
-                <Input  id='inputColumn' autoFocus placeholder="Enter the title" type="text"/><br/>
-                <Button value="" onClick={getCoulmnValue}><b>+</b> &nbsp;&nbsp;Add new column</Button>
+                <Input id='inputColumn' autoFocus placeholder="Enter the title" type="text"/><br/>
+                <Button onClick={getCoulmnValue}><b>+</b> &nbsp;&nbsp;Add new column</Button>
         </Container>
         :
         <Container ref={node} isFocused={isFocused} onClick={() => setFocus(true)}>

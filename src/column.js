@@ -1,8 +1,8 @@
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-import Task from './Task';
-import AddNewTask from './AddNewTask';
+import Task from './task';
+import AddNewTask from './addNewTask';
 
 const Container = styled.div`   
     margin: 8px;
@@ -16,6 +16,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
+    word-wrap: break-word;
     margin: 0px;
     padding: 8px;
     background-color: #094074;

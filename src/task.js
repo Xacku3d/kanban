@@ -11,6 +11,7 @@ const Container = styled.div`
     background-color: ${props => (props.isDragging ? '#A5D328' : 'white')};
     color: ${props => (props.isDragging ? '#FFFFFC' : 'black')};
     box-shadow: 0 0 10px rgba(0,0,0,${props => (props.isDragging ? '0.5' : '0')});
+    word-wrap: break-word;
 `;
 
 export default class Task extends Component {
