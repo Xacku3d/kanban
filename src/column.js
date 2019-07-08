@@ -17,6 +17,7 @@ const Container = styled.div`
 
 const Title = styled.h3`
     word-wrap: break-word;
+    white-space: pre-line;
     margin: 0px;
     padding: 8px;
     background-color: #094074;

@@ -15,10 +15,11 @@ const Container = styled.div`
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `;
 
-const Input = styled.input`
+const Input = styled.textarea`
     width: 206px;
     height: 25px;
     padding-left: 5px;
+    resize: none;
 `
 
 const Button = styled.button`
@@ -41,15 +42,22 @@ export default function AddNewColumn({onNewColumn}) {
 
     const getCoulmnValue = () => {
         const value = document.getElementById('inputColumn').value;
-        if(value === "") {return;}
+        if(value.trim().length === 0) {return;}
         onNewColumn(value);
         setFocus(false);
+    }
+
+    const onInputKeyDown = (e) => {
+        const {key, shiftKey} = e;
+        if(shiftKey && key === 'Enter') {return;}
+        if(key === 'Enter') {getCoulmnValue()}
+        if(key === 'Escape') {setFocus(false)}
     }
 
     return (
         isFocused ?
         <Container ref={node} isFocused={isFocused}>
-                <Input id='inputColumn' autoFocus placeholder="Enter the title" type="text"/><br/>
+                <Input onKeyDown={onInputKeyDown} id='inputColumn' autoFocus placeholder="Enter the title" type="text"/><br/>
                 <Button onClick={getCoulmnValue}><b>+</b> &nbsp;&nbsp;Add new column</Button>
         </Container>
         :

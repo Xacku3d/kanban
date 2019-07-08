@@ -15,10 +15,11 @@ const Container = styled.div`
     font-family: 'Noto Sans KR', sans-serif;
 `;
 
-const Input = styled.input`
+const Input = styled.textarea`
     width: 191px;
     height: 25px;
     padding-left: 5px;
+    resize: none;
 `
 
 const Button = styled.button`
@@ -41,15 +42,22 @@ export default function AddNewTask({onNewTask}) {
 
     const getTaskValue = () => {
         const value = document.getElementById('inputTask').value;
-        if(value === "") {return;}
+        if(value.trim().length === 0) {return;}
         onNewTask(value);
         setFocus(false);
+    }
+
+    const onInputKeyDown = (e) => {
+        const {key, shiftKey} = e;
+        if(shiftKey && key === 'Enter') {return;}
+        if(key === 'Enter') {getTaskValue()}
+        if(key === 'Escape') {setFocus(false)}
     }
 
     return (
         isFocused ?
         <Container ref={node} isFocused={isFocused}>
-                <Input  id='inputTask' autoFocus placeholder="Enter the title" type="text"/><br/>
+                <Input onKeyDown={onInputKeyDown}  id='inputTask' autoFocus placeholder="Enter the title" type="text"/><br/>
                 <Button value="" onClick={getTaskValue}><b>+</b>&nbsp;&nbsp;Add new task</Button>
         </Container>
         :
